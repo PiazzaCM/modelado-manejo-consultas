@@ -10,12 +10,11 @@ const __dirname = dirname(__filename);
 import { fileURLToPath } from 'url';
 import { dirname } from 'path';
 import { connectDb } from './src/config/connection.js';
-import { environments } from './src/config/environments.js';
-
 
 
 const app = express();
 
+const PORT = 3000;
 
 
 //middlewares
@@ -30,8 +29,7 @@ app.use(express.static(path.join(__dirname, 'public')));
 
 
 //puerto
-app.listen(environments.PORT, async () => {
-    console.log(`server on port ${environments.PORT}`)
+app.listen(PORT, async () => {
+    console.log(`server on port ${PORT}`)
     connectDb();
   })
-  

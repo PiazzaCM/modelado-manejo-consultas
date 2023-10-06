@@ -1,11 +1,13 @@
 import mongoose from "mongoose";
+import dotenv from "dotenv";
 
+dotenv.config(); // Cargar las variables de entorno desde el archivo .env
 
 export const connectDb = async () => {
     try {
-        await mongoose.connect('mongodb://localhost:27017/db')
-        console.log('Conexion establecida correctamente')
+        await mongoose.connect(process.env.MONGODB_URI);
+        console.log('Conexión establecida correctamente');
     } catch (error) {
-        console.error(`error al conectarse a la base de datos: ${error.message}`)
+        console.error(`Error al conectarse a la base de datos: ${error.message}`);
     }
 }
