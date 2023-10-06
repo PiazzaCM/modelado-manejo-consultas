@@ -2,8 +2,9 @@ import express from 'express';
 import morgan from 'morgan';
 import cors from 'cors';
 import path from 'path';
-import 'dotenv/config.js';
+import dotenv from "dotenv";
 
+dotenv.config();
 
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = dirname(__filename);
@@ -13,9 +14,6 @@ import { connectDb } from './src/config/connection.js';
 
 
 const app = express();
-
-const PORT = 3000;
-
 
 //middlewares
 app.use(morgan('dev'));
@@ -29,7 +27,7 @@ app.use(express.static(path.join(__dirname, 'public')));
 
 
 //puerto
-app.listen(PORT, async () => {
-    console.log(`server on port ${PORT}`)
+app.listen(process.env.PORT, async () => {
+    console.log(`server on port ${process.env.PORT}`)
     connectDb();
   })
