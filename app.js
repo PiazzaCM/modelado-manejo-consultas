@@ -3,6 +3,8 @@ import morgan from 'morgan';
 import cors from 'cors';
 import path from 'path';
 import dotenv from "dotenv";
+import fileUpload from 'express-fileupload';
+
 
 dotenv.config();
 
@@ -21,6 +23,16 @@ app.use(morgan('dev'));
 app.use(cors());
 app.use(express.json());
 app.use(express.static(path.join(__dirname, 'public')));
+app.set("view engine", "ejs");
+app.use(
+  fileUpload({
+    createParentPath: true,
+    limits: { fileSize: 20 * 1024 * 1024 },
+    abortOnLimit: true,
+    responseOnLimit: "Archivo muy grande",
+  })
+);
+
 
 
 // Rutas
