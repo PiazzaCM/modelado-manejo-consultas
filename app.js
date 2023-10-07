@@ -11,7 +11,8 @@ const __dirname = dirname(__filename);
 import { fileURLToPath } from 'url';
 import { dirname } from 'path';
 import { connectDb } from './src/config/connection.js';
-
+import { libroRouter } from './src/routes/libro.routes.js';
+import { autorRouter } from './src/routes/autor.routes.js';
 
 const app = express();
 
@@ -23,7 +24,8 @@ app.use(express.static(path.join(__dirname, 'public')));
 
 
 // Rutas
-
+app.use ('/libros', libroRouter);
+app.use ('/autores', autorRouter);
 
 
 //puerto

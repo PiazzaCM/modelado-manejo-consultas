@@ -22,6 +22,10 @@ const libroSchema = new mongoose.Schema({
         ref: 'autor',
         required: true
     },
+    genero: {
+        type: String,
+        required: true
+    },
 });
 
 export const Libro = mongoose.model('libro', libroSchema);
