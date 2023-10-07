@@ -1,4 +1,4 @@
-import { libroService } from "../models/libro.model";
+import { libroService } from "../models/libro.model.js";
 
 export const libroController = {
     async getLibros(req, res) {
@@ -37,9 +37,9 @@ export const libroController = {
         }
     },
 
-    async borrarLibro(req, res) {
+    async eliminarLibro(req, res) {
         try {
-            const libro = await libroService.borrarLibro(req.params.id);
+            const libro = await libroService.eliminarLibro(req.params.id);
             res.status(200).json(libro);
         } catch (error) {
             res.status(500).json(error);

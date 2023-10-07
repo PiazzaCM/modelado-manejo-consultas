@@ -1,12 +1,12 @@
 import { Router } from 'express';
-import { getAutores, createAutor, getAutor, updateAutor, deleteAutor } from '../controllers/autor.controller.js';
+import { autorController } from '../controllers/autor.controller.js';
 
 const autorRouter = Router();
 
-autorRouter.post('/', createAutor);
-autorRouter.get('/', getAutores);
-autorRouter.get('/:id', getAutor);
-autorRouter.put('/:id', updateAutor);
-autorRouter.delete('/:id', deleteAutor);
+autorRouter.post('/', autorController.crearAutor);
+autorRouter.get('/', autorController.getAutores);
+autorRouter.get('/:id', autorController.getAutor);
+autorRouter.put('/:id', autorController.actualizarAutor);
+autorRouter.delete('/:id', autorController.eliminarAutor);
 
 export { autorRouter }
