@@ -13,10 +13,6 @@ const autorSchema = new mongoose.Schema({
         maxlength: 50,
         minlength: 3
     },
-    fechaNacimiento: {
-        type: Date,
-        required: true
-    },
     biografia: {
         type: String,
         required: true,

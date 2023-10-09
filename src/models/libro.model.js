@@ -7,12 +7,6 @@ const libroSchema = new mongoose.Schema({
         maxlength: 50,
         minlength: 3
     },
-    descripcion: {
-        type: String,
-        required: true,
-        maxlength: 50,
-        minlength: 3
-    },
     portada: {
         type: String,
         required: true,
@@ -26,6 +20,10 @@ const libroSchema = new mongoose.Schema({
         type: String,
         required: true
     },
+    publicacion: {
+        type: String,
+        required: true
+    },
 });
 
 export const Libro = mongoose.model('libro', libroSchema);
@@ -35,7 +33,7 @@ export const Libro = mongoose.model('libro', libroSchema);
 export const libroService = {
     async getLibros() {
         try {
-            return await Libro.find();
+            return await Libro.find().populate('autor');
         } catch (error) {
             throw error;
         }
